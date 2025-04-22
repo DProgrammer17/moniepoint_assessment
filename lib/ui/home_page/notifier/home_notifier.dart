@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moniepoint_assessment/ui/home_page/notifier/home_model.dart';
 
@@ -7,10 +8,10 @@ final homeNotifier = NotifierProvider<HomeNotifier, HomeModel>(() {
 
 class HomeNotifier extends Notifier<HomeModel> {
   @override
-  HomeModel build() => const HomeModel();
+  HomeModel build() =>  const HomeModel();
 
   void initializeCount() {
-    state = state.copyWith(tileDx: 0);
+    state = state.copyWith(tileDx: 0, fadeInCountTiles: true);
   }
 
   void initializeModal() {

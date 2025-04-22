@@ -34,7 +34,10 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
         backgroundColor: Colors.transparent,
         toolbarHeight: 0,
       ),
-      body: ref.watch(baseNotifier).navPages.elementAt(ref.watch(baseNotifier).currentIndex ?? 2),
+      body: IndexedStack(
+        index: ref.watch(baseNotifier).currentIndex ?? 2,
+        children: ref.watch(baseNotifier).navPages,
+      ),
       bottomNavigationBar: AnimatedSlide(
         offset: Offset(0, ref.watch(baseNotifier).navDy),
         duration: const Duration(seconds: 2),
@@ -48,8 +51,9 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
               borderRadius: BorderRadius.circular(50.ar),
             ),
             child: BottomNavigationBar(
-              onTap: (index) =>
-                  ref.watch(baseNotifier.notifier).updateNavIndex(widget.currentIndex ?? index),
+              onTap: (index) => ref
+                  .watch(baseNotifier.notifier)
+                  .updateNavIndex(widget.currentIndex ?? index),
               backgroundColor: Colors.transparent,
               elevation: 0,
               iconSize: 0,
@@ -60,7 +64,9 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
                 BottomNavigationBarItem(
                   icon: Container(
                     padding: EdgeInsets.all(
-                        ref.watch(baseNotifier).currentIndex == 0 ? 18.ar : 10.ar),
+                        ref.watch(baseNotifier).currentIndex == 0
+                            ? 18.ar
+                            : 10.ar),
                     decoration: BoxDecoration(
                       color: ref.watch(baseNotifier).currentIndex == 0
                           ? AppColors.primaryOrange
@@ -80,7 +86,9 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
                 BottomNavigationBarItem(
                   icon: Container(
                     padding: EdgeInsets.all(
-                        ref.watch(baseNotifier).currentIndex == 1 ? 18.ar : 10.ar),
+                        ref.watch(baseNotifier).currentIndex == 1
+                            ? 18.ar
+                            : 10.ar),
                     decoration: BoxDecoration(
                       color: ref.watch(baseNotifier).currentIndex == 1
                           ? AppColors.primaryOrange
@@ -100,7 +108,9 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
                 BottomNavigationBarItem(
                   icon: Container(
                     padding: EdgeInsets.all(
-                        ref.watch(baseNotifier).currentIndex == 2 ? 18.ar : 10.ar),
+                        ref.watch(baseNotifier).currentIndex == 2
+                            ? 18.ar
+                            : 10.ar),
                     decoration: BoxDecoration(
                       color: ref.watch(baseNotifier).currentIndex == 2
                           ? AppColors.primaryOrange
@@ -120,7 +130,9 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
                 BottomNavigationBarItem(
                   icon: Container(
                     padding: EdgeInsets.all(
-                        ref.watch(baseNotifier).currentIndex == 3 ? 18.ar : 10.ar),
+                        ref.watch(baseNotifier).currentIndex == 3
+                            ? 18.ar
+                            : 10.ar),
                     decoration: BoxDecoration(
                       color: ref.watch(baseNotifier).currentIndex == 3
                           ? AppColors.primaryOrange
@@ -140,7 +152,9 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
                 BottomNavigationBarItem(
                   icon: Container(
                     padding: EdgeInsets.all(
-                        ref.watch(baseNotifier).currentIndex == 4 ? 18.ar : 10.ar),
+                        ref.watch(baseNotifier).currentIndex == 4
+                            ? 18.ar
+                            : 10.ar),
                     decoration: BoxDecoration(
                       color: ref.watch(baseNotifier).currentIndex == 4
                           ? AppColors.primaryOrange

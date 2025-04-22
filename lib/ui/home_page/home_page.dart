@@ -1,5 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:countup/countup.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moniepoint_assessment/core/constants/app_assets.dart';
 import 'package:moniepoint_assessment/core/constants/app_colors.dart';
@@ -61,7 +63,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                           AnimatedSlide(
+                          AnimatedSlide(
                             offset: Offset(ref.watch(homeNotifier).tileDx, 0),
                             duration: const Duration(seconds: 2),
                             curve: Curves.easeInOut,
@@ -77,7 +79,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                           color: AppColors.softBrown,
                           fontWeight: FontWeight.w300,
                         ),
-                      ),
+                      )
+                          .animate()
+                          .fadeIn(
+                            duration: const Duration(seconds: 1),
+                          )
+                          .slide(
+                            duration: const Duration(seconds: 1),
+                            begin: const Offset(0, 0.5),
+                            end: const Offset(0, 0),
+                          ),
                       8.sbH,
                       Text(
                         AppStrings.selectPerfectPlace,
@@ -85,24 +96,83 @@ class _HomePageState extends ConsumerState<HomePage> {
                           color: AppColors.textBlack,
                           fontWeight: FontWeight.w300,
                         ),
-                      ),
+                      )
+                          .animate()
+                          .fadeIn(
+                            duration: const Duration(seconds: 1),
+                          )
+                          .slide(
+                            duration: const Duration(seconds: 1),
+                            begin: const Offset(0, 0.5),
+                            end: const Offset(0, 0),
+                          ),
                       32.sbH,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CircleAvatar(
-                            radius: 90.ah,
-                            backgroundColor: AppColors.primaryOrange,
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  14.aw, 12.ah, 14.aw, 25.ah),
+                          AnimatedOpacity(
+                            opacity: ref.watch(homeNotifier).fadeInCountTiles ? 1.0 : 0.0,
+                            duration:const Duration(milliseconds: 700),
+                            child: CircleAvatar(
+                              radius: 90.ah,
+                              backgroundColor: AppColors.primaryOrange,
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    14.aw, 12.ah, 14.aw, 25.ah),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      AppStrings.buy,
+                                      style: AppTextStyles.body2Regular.copyWith(
+                                        color: AppColors.neutralWhite,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                    18.sbH,
+                                    Countup(
+                                      begin: 0,
+                                      end: 1034,
+                                      duration: const Duration(seconds: 3),
+                                      separator: ' ',
+                                      style: AppTextStyles.h0.copyWith(
+                                        color: AppColors.neutralWhite,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    10.sbH,
+                                    Text(
+                                      AppStrings.offers,
+                                      style: AppTextStyles.body2Regular.copyWith(
+                                        color: AppColors.neutralWhite,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          AnimatedOpacity(
+                            opacity: ref.watch(homeNotifier).fadeInCountTiles ? 1.0 : 0.0,
+                            duration:const Duration(milliseconds: 700),
+                            child: Container(
+                              height: 170.ah,
+                              width: 170.aw,
+                              alignment: Alignment.center,
+                              padding:
+                                  EdgeInsets.fromLTRB(14.aw, 12.ah, 14.aw, 25.ah),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18.ar),
+                                color: AppColors.neutralWhite,
+                              ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
                                     AppStrings.buy,
                                     style: AppTextStyles.body2Regular.copyWith(
-                                      color: AppColors.neutralWhite,
+                                      color: AppColors.softBrown,
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -113,7 +183,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     duration: const Duration(seconds: 3),
                                     separator: ' ',
                                     style: AppTextStyles.h0.copyWith(
-                                      color: AppColors.neutralWhite,
+                                      color: AppColors.softBrown,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -121,54 +191,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   Text(
                                     AppStrings.offers,
                                     style: AppTextStyles.body2Regular.copyWith(
-                                      color: AppColors.neutralWhite,
+                                      color: AppColors.softBrown,
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ),
-                          Container(
-                            height: 170.ah,
-                            width: 170.aw,
-                            alignment: Alignment.center,
-                            padding:
-                                EdgeInsets.fromLTRB(14.aw, 12.ah, 14.aw, 25.ah),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(18.ar),
-                              color: AppColors.neutralWhite,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  AppStrings.buy,
-                                  style: AppTextStyles.body2Regular.copyWith(
-                                    color: AppColors.softBrown,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                                18.sbH,
-                                Countup(
-                                  begin: 0,
-                                  end: 1034,
-                                  duration: const Duration(seconds: 3),
-                                  separator: ' ',
-                                  style: AppTextStyles.h0.copyWith(
-                                    color: AppColors.softBrown,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                10.sbH,
-                                Text(
-                                  AppStrings.offers,
-                                  style: AppTextStyles.body2Regular.copyWith(
-                                    color: AppColors.softBrown,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                              ],
                             ),
                           ),
                         ],
