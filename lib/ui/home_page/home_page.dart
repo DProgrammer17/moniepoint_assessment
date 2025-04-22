@@ -179,7 +179,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   18.sbH,
                                   Countup(
                                     begin: 0,
-                                    end: 1034,
+                                    end: 2212,
                                     duration: const Duration(seconds: 3),
                                     separator: ' ',
                                     style: AppTextStyles.h0.copyWith(
