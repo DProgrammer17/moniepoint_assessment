@@ -170,7 +170,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    AppStrings.buy,
+                                    AppStrings.rent,
                                     style: AppTextStyles.body2Regular.copyWith(
                                       color: AppColors.softBrown,
                                       fontWeight: FontWeight.w300,
